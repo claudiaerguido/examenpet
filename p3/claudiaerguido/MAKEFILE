@@ -1,0 +1,14 @@
+all:
+	@echo "Uso:"
+	@echo " - make servidor : Lanza el servidor (serv3.py)"
+	@echo " - make cliente  : Lanza el cliente (cli3.py)"
+	@echo " - make clean    : Borra la FIFO"
+
+servidor:
+	python3 serv3.py
+
+cliente:
+	python3 cli3.py
+
+clean:
+	rm -f /tmp/fifo_grupo5

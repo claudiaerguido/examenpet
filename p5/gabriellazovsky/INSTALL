@@ -1,0 +1,40 @@
+# Instalación práctica 5 - sockets UDP
+
+## Archivos incluidos:
+- srv5.py             → Servidor UDP de fecha y hora
+- cli5.py             → Cliente UDP de fecha y hora
+- **srv_archivos_udp.py** → Servidor UDP para gestionar solicitudes de archivos
+- **cli_archivos_udp.py** → Cliente UDP para solicitar y recibir archivos
+- Makefile            → Para facilitar la ejecución
+- manual_usuario.txt  → Guía de uso
+- manual_instalacion.txt → Este documento
+
+## 1. Requisitos:
+- Python 3
+- (Opcional) `setproctitle` → instalar con:
+  $ pip install setproctitle
+
+## 2. Uso rápido:
+
+- Ejecutar el servidor:
+  $ make servidor5
+
+- Ejecutar el cliente:
+  $ make cliente5
+
+## 3. Configuración personalizada:
+
+Puedes cambiar IP y puerto usando variables de entorno. Ejemplo:
+
+- Cambiar puerto:
+  $ PORT=9050 make servidor5
+
+- Cambiar IP:
+  $ HOST=localhost make cliente5
+
+- Cambiar ambos:
+  $ HOST=localhost PORT=9050 make cliente5
+
+## 4. Limpieza:
+- No se generan archivos temporales. No es necesario ejecutar `make clean`.
+

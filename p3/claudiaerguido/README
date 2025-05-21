@@ -1,0 +1,91 @@
+# Aplicación: Cliente-Servidor de Fecha y Hora
+
+📚 Descripción del proyecto
+
+Esta aplicación implementa un sistema cliente-servidor en Python utilizando FIFOs (tuberías con nombre) de Unix.  
+El cliente envía una solicitud simple al servidor, y el servidor responde devolviendo la fecha y hora actual.
+
+---
+
+📂 Archivos del proyecto
+
+- `cli3.py`: Código fuente del cliente.
+- `serv3.py`: Código fuente del servidor.
+- `Makefile`: Archivo para ejecutar los programas fácilmente.
+
+---
+
+⚙️ Requisitos previos
+
+- Sistema operativo Unix/Linux.
+- Python 3 instalado.
+- Permisos para crear archivos en `/tmp/`.
+
+---
+
+🚀 Cómo usar la aplicación
+
+1️⃣ Iniciar el servidor
+
+En una terminal, ejecutar:
+
+```
+make servidor
+```
+
+Esto crea la tubería `/tmp/fifo_grupo5` y deja el servidor esperando solicitudes.
+
+---
+2️⃣ Iniciar el cliente
+
+En otra terminal, ejecutar:
+
+```
+make cliente
+```
+
+El cliente envía una solicitud y recibe la fecha y hora actual como respuesta.
+
+---
+
+3️⃣ Finalizar
+
+Después de una interacción (una solicitud y una respuesta), ambos procesos finalizan automáticamente.
+
+---
+📦 Comandos disponibles
+
+| Comando         | Acción                                |
+|-----------------|---------------------------------------|
+| `make servidor` | Ejecuta el servidor (`serv3.py`).     |
+| `make cliente`  | Ejecuta el cliente (`cli3.py`).       |
+| `make clean`    | Elimina la FIFO `/tmp/fifo_grupo5`.   |
+
+---
+📄 Ejemplo de ejecución
+
+Servidor (Terminal 1):
+
+```
+make servidor
+Servidor esperando solicitudes...
+Servidor ha recibido una solicitud: Dame la fecha y hora
+Servidor terminado
+```
+
+Cliente (Terminal 2):
+
+```
+make cliente
+Respuesta del servidor:
+Fecha y hora actual: 2025-04-26 18:42:15
+```
+
+---
+
+⚠️ Notas importantes
+
+- Ejecutar siempre primero `make servidor` y luego `make cliente`.
+- Asegurarse de usar la misma FIFO (`/tmp/fifo_grupo5`) en ambos programas.
+- Limpiar la FIFO tras las pruebas con `make clean`, especialmente antes de repetir la ejecución.
+

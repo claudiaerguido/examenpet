@@ -1,0 +1,82 @@
+# Manual de Usuario - Práctica 5 Hora(Sockets UDP)
+
+## Descripción general
+Esta aplicación cliente-servidor utiliza sockets UDP (PF_INET) para que un cliente solicite la **fecha y hora** al servidor. El servidor responde con una cadena ISO (formato estándar internacional).
+
+## Ejecución
+
+### Iniciar el servidor:
+$ make servidor5
+
+- Por defecto escucha en 127.0.0.1:9009
+- El proceso aparecerá como `serv5` si tienes instalado `setproctitle`
+
+### Iniciar el cliente:
+$ make cliente5
+
+- Envía una solicitud al servidor y muestra la respuesta.
+- El proceso aparecerá como `cli5` si tienes instalado `setproctitle`
+
+## Configuración personalizada
+
+Puedes cambiar la IP y/o el puerto con variables de entorno:
+
+- Solo cambiar puerto:
+  $ PORT=9050 make servidor5
+
+- Solo cambiar IP:
+  $ HOST=192.168.1.20 make cliente5
+
+- Cambiar ambos:
+  $ HOST=localhost PORT=9050 make cliente5
+
+## Finalización del servidor
+Pulsa Ctrl+C para detenerlo manualmente en la terminal.
+
+## Compatibilidad
+- Funciona en cualquier sistema compatible con Python y sockets UDP.
+- Los puertos se pueden personalizar por grupo para evitar colisiones.
+
+## Notas adicionales
+- El servidor no finaliza tras atender al cliente.
+- Puedes hacer pruebas múltiples relanzando el cliente desde otra terminal o en bucle.
+
+### Ejemplo de prueba en bucle:
+```bash
+for i in {1..5}; do make cliente5; sleep 1; done
+
+# Manual de Usuario - Práctica 5 Archivos (Sockets UDP)
+
+## Descripción general
+Esta aplicación cliente-servidor utiliza sockets UDP (PF_INET) para que un cliente consulte el contenido de un archivo en un servidor remoto. El servidor responde enviando el archivo en fragmentos de tamaño adecuado para UDP.
+
+El cliente solicita el archivo mediante su ruta, y el servidor lo envía fragmentado para evitar errores de transmisión debido al límite de tamaño de los paquetes UDP.
+
+## Ejecución
+
+### Iniciar el servidor:
+Para iniciar el servidor que gestiona las peticiones y envía los archivos:
+
+```bash
+$ make servidor5_archivos
+
+Para iniciar el cliente que solicita un archivo al servidor:
+
+```bash
+$ make cliente5_archivos
+
+Configuración personalizada
+
+Puedes cambiar la IP y/o el puerto con variables de entorno. Ejemplo:
+
+Cambiar puerto:
+$ PORT=5050 make servidor5_archivos
+Cambiar IP:
+$ HOST=192.168.1.10 make cliente5_archivos
+Cambiar ambos (IP y puerto):
+$ HOST=localhost PORT=5050 make cliente5_archivos
+Finalización del servidor
+
+Para detener el servidor, pulsa Ctrl+C en la terminal donde esté ejecutándose.
+
+

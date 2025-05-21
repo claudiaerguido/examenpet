@@ -1,0 +1,52 @@
+titulo: "Práctica 2: Cliente-Servidor mediante Pipes"
+aplicacion: "Cliente-Servidor de Ficheros"
+
+descripcion: |
+  Esta aplicación implementa un sistema cliente-servidor en Python utilizando pipes (tuberías) de Unix.
+  El cliente envía al servidor una ruta de fichero. El servidor responde devolviendo el contenido del fichero o un mensaje de error.
+
+archivos:
+  - cli2.py: "Código fuente del cliente"
+  - serv2.py: "Código fuente del servidor"
+  - makefile: "Archivo para ejecutar los programas fácilmente"
+
+requisitos:
+  - "Sistema operativo Unix/Linux"
+  - "Python 3 instalado"
+  - "Permisos para trabajar en /tmp/"
+
+uso:
+  pasos:
+    - "Abre dos terminales."
+    - "En la primera terminal ejecuta: make servidor"
+    - "En la segunda terminal ejecuta: make cliente"
+    - "Introduce la ruta del fichero cuando se solicite (por ejemplo: /etc/passwd)."
+
+resultado:
+  - "Si el fichero existe, se muestra su contenido."
+  - "Si el fichero no existe, se muestra un mensaje de error."
+
+comandos:
+  - make servidor: "Ejecuta el servidor (serv2.py)."
+  - make cliente: "Ejecuta el cliente (cli2.py)."
+  - make clean: "Elimina la tubería /tmp/mypipe."
+
+ejemplo_ejecucion:
+  servidor:
+    - "make servidor"
+    - "Servidor esperando solicitudes..."
+    - "Servidor ha recibido solicitud de: /etc/passwd"
+    - "Servidor terminado"
+  cliente:
+    - "make cliente"
+    - "Introduce la ruta del fichero que quieres leer: /etc/passwd"
+    - "Respuesta del servidor:"
+    - "root:x:0:0:root:/root:/bin/bash"
+    - "daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin"
+    - "..."
+
+notas:
+  - "Ejecutar siempre primero make servidor y luego make cliente."
+  - "Usar la misma tubería /tmp/mypipe en ambos programas."
+  - "Limpiar la tubería con make clean tras las pruebas si se desea."
+
